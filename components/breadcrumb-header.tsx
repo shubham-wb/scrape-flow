@@ -8,6 +8,7 @@ import {
     BreadcrumbList,
     BreadcrumbSeparator
 } from "@/components/ui/breadcrumb"
+import { MobileSidebar } from './sidebar'
 type Props = {}
 
 function BreadcrumbHeader({ }: Props) {
@@ -15,6 +16,7 @@ function BreadcrumbHeader({ }: Props) {
     const paths = pathname === "/" ? [""] : pathname.split("/")
     return (
         <div className="flex items-center flex-start">
+            <MobileSidebar />
             <Breadcrumb>
                 <BreadcrumbList>
                     {

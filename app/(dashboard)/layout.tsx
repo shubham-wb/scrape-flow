@@ -4,6 +4,7 @@ import DesktopSidebar from '@/components/sidebar'
 import BreadcrumbHeader from '@/components/breadcrumb-header'
 import { ModeToggle } from '@/components/theme-mode-toggle'
 import { AppProvider } from '@/components/providers/AppProvider'
+import { SignedIn, UserButton } from '@clerk/nextjs'
 
 function layout({ children }: {
     children: React.ReactNode
@@ -21,6 +22,9 @@ function layout({ children }: {
                         <BreadcrumbHeader />
                         <div className="gap-1 flex items-center">
                             <ModeToggle />
+                            <SignedIn>
+                                <UserButton />
+                            </SignedIn>
                         </div>
                     </header>
 
