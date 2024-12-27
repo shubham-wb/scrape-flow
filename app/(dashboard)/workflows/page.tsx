@@ -1,9 +1,11 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { Suspense } from "react";
 import { InboxIcon } from "lucide-react";
-import { GetWorkflowsForUser } from "@/actions/workflows/getWorkflowsForUser";
+import { GetWorkflowsForUser } from "@/actions/workflows/get-workflows-for-user";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { AlertCircle } from "lucide-react";
+import CreateWorkflowDialog from "./_components/create-workflow-dialog";
+import WorkflowCard from "./_components/workflow-card";
 function Page() {
     return <div className="flex-1 flex flex-col h-full">
         <div className="flex justify-between">
@@ -15,6 +17,8 @@ function Page() {
                     Manage your workflows.
                 </p>
             </div>
+            <CreateWorkflowDialog
+            />
         </div>
         <div className="h-full py-6">
             <Suspense fallback={<UserWorkflowsSkeleton />}>
@@ -50,9 +54,16 @@ async function UserWorkflows() {
                         Click the button below to create your first workflow
                     </p>
                 </div>
+                <CreateWorkflowDialog triggerText="Create your first workflow" />
             </div>
         }
-        return <div> </div>
+        return <div className="grid grid-cols-1 gap-1">
+            {
+                workflows.map((workflow, index) => {
+                    return <WorkflowCard key={workflow.id} workflow={workflow} />
+                })
+            }
+        </div>
 
     } catch (error) {
         <Alert variant={"destructive"}
