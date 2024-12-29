@@ -1,10 +1,10 @@
 "use client"
-import { Workflow } from '@prisma/client'
 import React, { useCallback, useEffect } from 'react'
+
+import { Workflow } from '@prisma/client'
 import { addEdge, Background, BackgroundVariant, Connection, Controls, Edge, ReactFlow, useEdgesState, useNodesState, useReactFlow } from '@xyflow/react'
-
-
 import "@xyflow/react/dist/style.css"
+
 import { CreateFlowNode } from '@/lib/workflow/create-flow-node'
 import { TaskType } from '@/types/task'
 import NodeComponent from './nodes/node-component'
@@ -20,8 +20,8 @@ const edgeTypes = {
 }
 
 const snapGrid: [number, number] = [50, 50]
-const fitViewOptions = {
 
+const fitViewOptions = {
     padding: 1
 }
 
