@@ -32,7 +32,7 @@ function NodeHeader({ taskType, nodeId }: Props) {
 
                     <Badge className='flex gap-2 items-center text-xs'>
                         <CoinsIcon size={16} />
-                        TODO
+                        {task.credits}
                     </Badge>
                     {
                         !task.isEntryPoint && <>
