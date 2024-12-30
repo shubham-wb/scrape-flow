@@ -25,8 +25,10 @@ export function NodeInput({ input, nodeId }: {
     input: TaskParam
     nodeId: string
 }) {
-    return <div className='flex justify-start p-3 bg-secondary w-full'>
-        <NodeParamField param={input} nodeId={nodeId} />
+    return <div className='flex justify-start relative p-3 bg-secondary w-full'>
+        <NodeParamField param={input} nodeId={nodeId}
+
+        />
         {!input.hideHandle &&
 
             <Handle id={input.name} type="target" position={Position.Left}
