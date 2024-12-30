@@ -1,3 +1,4 @@
+"use client"
 import { AppNodeMissingInputs } from "@/types/app-node"
 import { Dispatch, ReactNode, SetStateAction, useState } from "react"
 import { createContext } from "react"
