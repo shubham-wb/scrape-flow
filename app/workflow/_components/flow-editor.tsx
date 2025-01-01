@@ -77,7 +77,6 @@ function FlowEditor({ workflow }: {
         // remove input value if it is present on connection
 
         const node = nodes.find((nds) => nds.id === connection.target)
-        console.log(node)
         if (!node) return
         const nodeInputs = node.data.inputs
         updateNodeData(node.id, {
@@ -99,7 +98,7 @@ function FlowEditor({ workflow }: {
         //same taskParam type connection 
         const source = nodes.find((node) => node.id === connection.source)
         const target = nodes.find((node) => node.id === connection.target)
-        console.log({ target, source })
+
         if (!source || !target) {
             console.error("Invalid connection: source or target node not found.")
             return false
