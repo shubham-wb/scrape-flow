@@ -4,15 +4,16 @@ import puppeteer from "puppeteer";
 import { LaunchBrowserTask } from "../task/launch-browser";
 export async function LaunchBrowserExecutor(
   environment: ExecutionEnvironment<typeof LaunchBrowserTask>
-): Promise<Boolean> {
+): Promise<boolean> {
   try {
     const websiteUrl = environment.getInput("Website Url");
     const browser = await puppeteer.launch({
-      headless: false,
+      headless: true,
     });
-    await waitFor(3000);
-    await browser.close();
-    console.log("@URI", websiteUrl);
+    environment.setBrowser(browser);
+    const page = await browser.newPage();
+    await page.goto(websiteUrl);
+    environment.setPage(page);
     return true;
   } catch (error) {
     console.error(error);
