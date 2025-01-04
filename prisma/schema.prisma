@@ -29,15 +29,15 @@ model Workflow {
 }
 
 model WorkflowExecution {
-  id         String @id @default(cuid())
-  workflowId String
-  userId     String
-  trigger    String
-  status     String
-
+  id          String    @id @default(cuid())
+  workflowId  String
+  userId      String
+  trigger     String
+  status      String
   createdAt   DateTime  @default(now())
   startedAt   DateTime?
   completedAt DateTime?
+  definition  String    @default("{}")
 
   creditsConsumed Int @default(0)
 
@@ -61,4 +61,14 @@ model ExecutionPhase {
   creditsConsumed     Int?
   workflowExecutionId String
   execution           WorkflowExecution @relation(fields: [workflowExecutionId], references: [id], onDelete: Cascade)
+  logs                ExecutionLog[]
+}
+
+model ExecutionLog {
+  id               String         @id @default(cuid())
+  logLevel         String
+  message          String
+  timestamp        DateTime       @default(now())
+  executionPhaseId String
+  executionPhase   ExecutionPhase @relation(fields: [executionPhaseId], references: [id], onDelete: Cascade)
 }
