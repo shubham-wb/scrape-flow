@@ -259,7 +259,7 @@ function setupEnvironmentForPhase(
         connectedEdge.sourceHandle!
       ];
 
-    environment.phases[node?.id].inputs[input.name];
+    environment.phases[node?.id].inputs[input.name] = outputValue;
   }
 }
 
